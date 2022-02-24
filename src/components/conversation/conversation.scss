@@ -1,0 +1,43 @@
+.conversation {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+  color: black;
+  text-decoration: none;
+  &__img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+  }
+  &__name {
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+  &__remove {
+    margin-left: auto;
+    opacity: 0;
+    pointer-events: none;
+    cursor: pointer;
+    transition: .3s all;
+    svg {
+      transition: .3s all;
+      font-size: 20px;
+    }
+    &:hover {
+      svg {
+        transform: scale(1.1);
+      }
+    }
+  }
+  &:hover {
+    background-color: rgb(245, 243, 243);
+    .conversation__remove {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}
