@@ -1,37 +1,58 @@
-import {Routes, Route} from 'react-router-dom';
-import {UserProvider} from '../../contexts/UserContext.js';
-import MainLayout from '../../layouts/mainLayout/MainLayout.js';
-import MessengerLayout from '../../layouts/messengerLayout/MessengerLayout.js';
-import AuthLayout from '../../layouts/authLayout/AuthLayout.js';
-import LoginContent from '../contents/LoginContent.js';
-import HomeContent from '../contents/HomeContent.js';
-import ProfileContent from '../contents/ProfileContent.js';
-import RegisterContent from '../contents/RegisterContent.js';
-import ChatBox from '../chatBox/ChatBox.js';
-import ScrollToTop from '../scrollToTop/ScrollToTop.js';
+import { Routes, Route } from 'react-router-dom'
+import MainLayout from '../../layouts/MainLayout'
+import MessengerLayout from '../../layouts/MessengerLayout'
+import ContainerLayout from '../../layouts/ContainerLayout'
+import BackdropLoading from '../LoadingUI/BackdropLoading'
+import ScrollToTop from '../ScrollWrappers/ScrollToTop'
+import loadable from '@loadable/component'
+import { ThemeProvider } from '../../contexts/ThemeContext'
+import { SnackbarProvider } from 'notistack'
+import SignInPage from '../../pages/SignInPage'
+import SignUpPage from '../../pages/SignUpPage'
+import { AuthProvider } from '../../contexts/AuthContext'
+import { SocketProvider } from '../../contexts/SocketContext'
+import HomePage from '../../pages/HomePage'
+import ProfilePage from '../../pages/ProfilePage'
 
+const SearchPage = loadable(() => import('../../pages/SearchPage'), {
+  fallback: <BackdropLoading />
+})
+
+const MessengerPage = loadable(() => import('../../pages/MessengerPage'), {
+  fallback: <BackdropLoading />
+})
 
 const App = () => {
   return (
-    <UserProvider>
-      <ScrollToTop>
-        <Routes>
-          <Route path="/" element={<MainLayout/>}>
-            <Route index element={<HomeContent/>}/>
-            <Route path="profile/:userId" element={<ProfileContent/>}/>
-          </Route>
-          <Route path="/auth" element={<AuthLayout/>}>
-            <Route path="register" element={<RegisterContent/>}/>
-            <Route path="login" element={<LoginContent/>}/>
-          </Route>
-          <Route path="/chat" element={<MessengerLayout/>}>
-            <Route index element={<ChatBox/>}/>
-            <Route path=":conversationId"element={<ChatBox/>}/>
-          </Route>
-        </Routes>
-      </ScrollToTop>
-    </UserProvider>
+    <SnackbarProvider
+      maxSnack={3}
+      anchorOrigin={{ horizontal: 'center', vertical: 'top' }}
+    >
+      <SocketProvider>
+        <AuthProvider>
+          <ThemeProvider>
+            <ScrollToTop>
+              <Routes>
+                <Route path="/" element={<MainLayout />}>
+                  <Route index element={<HomePage />} />
+                  <Route path="profile/:userId" element={<ProfilePage />} />
+                  <Route path="search" element={<SearchPage />} />
+                </Route>
+                <Route path="/auth" element={<ContainerLayout />}>
+                  <Route path="register" element={<SignUpPage />} />
+                  <Route path="login" element={<SignInPage />} />
+                </Route>
+                <Route path="/chat" element={<MessengerLayout />}>
+                  <Route index element={<MessengerPage />} />
+                  <Route path=":conversationId" element={<MessengerPage />} />
+                </Route>
+              </Routes>
+            </ScrollToTop>
+          </ThemeProvider>
+        </AuthProvider>
+      </SocketProvider>
+    </SnackbarProvider>
   )
-};
+}
 
-export default App;
+export default App
