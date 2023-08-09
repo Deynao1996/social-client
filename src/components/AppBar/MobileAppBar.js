@@ -6,8 +6,7 @@ import {
   IconButton,
   Stack,
   Toolbar,
-  Typography,
-  useMediaQuery
+  Typography
 } from '@mui/material'
 import { useEffect, useRef, useState } from 'react'
 import { useAuthProvider } from '../../contexts/AuthContext'

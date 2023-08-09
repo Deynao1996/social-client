@@ -9,12 +9,19 @@ import {
 import { formatDistance } from 'date-fns'
 import { Fragment } from 'react'
 
-const Message = ({ msg, i, arr, currentUser, isShowMessageDivider }) => {
+const Message = ({
+  msg,
+  i,
+  arr,
+  currentUser,
+  isShowMessageDivider,
+  data = 0
+}) => {
   const timeAgo = formatDistance(new Date(msg.createdAt), new Date(), {
     addSuffix: true
   })
   const isOwner = msg.sender.senderId === currentUser?._id
-  const isDividerPassed = isShowMessageDivider && i === arr.length - state.data
+  const isDividerPassed = isShowMessageDivider && i === arr.length - data
 
   return (
     <Fragment>

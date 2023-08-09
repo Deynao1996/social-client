@@ -80,7 +80,7 @@ export const createPost = async (data) => {
 }
 
 export const deletePost = async ({ postId }) => {
-  return await request({ url: `post/delete/${postId}`, method: 'DELETE' })
+  return await request({ url: `/post/delete/${postId}`, method: 'DELETE' })
 }
 
 export const createComment = async ({ data }) => {

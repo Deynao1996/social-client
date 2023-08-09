@@ -1,17 +1,17 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useAuthProvider } from '../contexts/AuthContext'
 import { deletePost } from '../utils/service-utils'
-import { useHandleError } from './useHandleError'
+import { useSnackbar } from 'notistack'
 
 export const useOptimisticDeletePostData = (postId) => {
   const queryClient = useQueryClient()
   const { currentUser } = useAuthProvider()
-  const { mutate, isError, error } = useMutation(deletePost, {
+  const { enqueueSnackbar } = useSnackbar()
+  const { mutate, error } = useMutation(deletePost, {
     onMutate: onHandleMutate,
     onError: onHandleError,
     onSettled: onHandleSettled
   })
-  useHandleError(isError, error)
 
   async function onHandleMutate() {
     await queryClient.cancelQueries('timeline')
@@ -34,7 +34,10 @@ export const useOptimisticDeletePostData = (postId) => {
     }
   }
 
-  function onHandleError(_error, _hero, context) {
+  function onHandleError(error, _hero, context) {
+    enqueueSnackbar(error.message || 'Something went wrong!', {
+      variant: 'warning'
+    })
     queryClient.setQueriesData(
       ['timeline', { userId: currentUser._id }],
       context.prevData
@@ -42,7 +45,7 @@ export const useOptimisticDeletePostData = (postId) => {
   }
 
   function onHandleSettled() {
-    queryClient.invalidateQueries(['timeline'])
+    queryClient.invalidateQueries(['timeline', { userId: currentUser._id }])
   }
   return { mutate }
 }

@@ -19,7 +19,7 @@ const Banner = () => {
       <CardMedia
         component="img"
         height="300"
-        image="https://hwabeng.org.my/wp-content/uploads/2021/09/social-media-marketing-agency.jpg"
+        image="https://firebasestorage.googleapis.com/v0/b/social-b02bb.appspot.com/o/1691318111428DreamShaper_v7_woman_in_social_media_2.jpg?alt=media&token=9c2791b4-69f9-4ae0-a9a5-26f283d5bc50"
         alt="Banner image"
       />
     </Card>

@@ -9,5 +9,5 @@ export const useHandleError = (isError, error) => {
       enqueueSnackbar(error.message || 'Something went wrong!', {
         variant: 'error'
       })
-  }, [isError])
+  }, [isError, error])
 }

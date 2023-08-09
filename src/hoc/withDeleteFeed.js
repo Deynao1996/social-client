@@ -1,12 +1,10 @@
-import { Delete, MoreVert } from '@mui/icons-material'
+import { Delete } from '@mui/icons-material'
 import {
   Button,
   DialogActions,
   DialogContentText,
-  IconButton,
   ListItemIcon,
   ListItemText,
-  Menu,
   MenuItem
 } from '@mui/material'
 import { useCallback, useState } from 'react'

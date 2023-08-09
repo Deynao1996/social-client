@@ -207,6 +207,7 @@ const MessengerBox = ({ conversationId, data: conversationData }) => {
             msg={msg}
             i={i}
             arr={arr}
+            data={state?.data}
             currentUser={currentUser}
             isShowMessageDivider={isShowMessageDivider}
           />

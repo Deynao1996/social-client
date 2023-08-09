@@ -80,7 +80,7 @@ const TopUserInfo = ({ data, isLoading, renderActionButton }) => {
         <Typography variant="h4" marginTop={2}>
           {fullName}
         </Typography>
-        <Typography>{data?.data.descr}</Typography>
+        <Typography textAlign="center">{data?.data.descr}</Typography>
         {!isLoading && (
           <IconButton
             sx={{

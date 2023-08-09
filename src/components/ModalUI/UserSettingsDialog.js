@@ -35,9 +35,7 @@ const inputFields = [
   { label: 'Country', value: 'from', pattern: '^[a-zA-Z ]*$' },
   {
     label: 'Email',
-    value: 'email',
-    pattern:
-      "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$"
+    value: 'email'
   },
   { label: 'Profile description', value: 'descr' }
 ]
@@ -130,30 +128,6 @@ const UserSettingsDialog = ({ open, handleClose, currentUser }) => {
       profilePicture: null
     }))
     formRef.current.profilePicture.value = null
-  }
-
-  function renderTextFields() {
-    return inputFields.map((item, i) => {
-      const currentValue = currentUser[item.value]
-      const transformedValue = currentValue
-        ? capitalizeString(currentValue)
-        : ''
-      return (
-        <Grid item xs={6} key={i}>
-          <TextField
-            label={item.label}
-            defaultValue={transformedValue}
-            InputProps={{ sx: { textTransform: 'capitalize' } }}
-            name={item.value}
-            id={item.value}
-            variant="standard"
-            fullWidth
-            inputProps={{ pattern: item.pattern || '.*' }}
-            margin="none"
-          />
-        </Grid>
-      )
-    })
   }
 
   function onSuccess() {
