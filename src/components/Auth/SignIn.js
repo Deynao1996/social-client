@@ -11,8 +11,8 @@ import { useAuthProvider } from '../../contexts/AuthContext'
 import { StyledBodyLink, StyledForm } from '../../styled'
 
 const initialValues = {
-  email: '',
-  password: ''
+  email: 'deynao1996@gmail.com',
+  password: '121212'
 }
 
 const validationSchema = Yup.object({
@@ -81,6 +81,7 @@ const SignIn = () => {
               autoFocus
               autoComplete="email"
               required={true}
+              disabled={true}
             />
             <CustomTextField
               name="password"
@@ -89,6 +90,7 @@ const SignIn = () => {
               id="password"
               autoComplete="current-password"
               required={true}
+              disabled={true}
             />
             <CustomSubmitButton
               margin="normal"
