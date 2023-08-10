@@ -81,7 +81,7 @@ const FeedOptionsMenu = ({
         <ListItemIcon>
           <OpenInNew fontSize="small" />
         </ListItemIcon>
-        <ListItemText>Open in new tab</ListItemText>
+        <ListItemText>Expand</ListItemText>
       </MenuItem>
       <MenuItem onClick={handleShareDialogOpen}>
         <ListItemIcon>
