@@ -1,6 +1,12 @@
 import Avatar from '@mui/material/Avatar'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
-import { Typography, Link as MuiLink } from '@mui/material'
+import {
+  Typography,
+  Link as MuiLink,
+  DialogContentText,
+  DialogActions,
+  Button
+} from '@mui/material'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 import CustomTextField from '../FormUI/CustomTextField'
@@ -9,6 +15,8 @@ import { useSnackbar } from 'notistack'
 import { loginUser } from '../../utils/service-utils'
 import { useAuthProvider } from '../../contexts/AuthContext'
 import { StyledBodyLink, StyledForm } from '../../styled'
+import ConfirmDialog from '../ModalUI/ConfirmDialog'
+import { useCallback, useEffect, useState } from 'react'
 
 const initialValues = {
   email: 'deynao1996@gmail.com',
@@ -41,6 +49,22 @@ const Copyright = (props) => {
 const SignIn = () => {
   const { enqueueSnackbar } = useSnackbar()
   const { login } = useAuthProvider()
+  const [isDialogOpen, setIsDialogOpen] = useState(false)
+
+  const handleDialogClose = useCallback(() => {
+    setIsDialogOpen(false)
+  }, [setIsDialogOpen])
+
+  const handleBlockDialog = () => {
+    localStorage.setItem('show-server-delay-dialog', 'block')
+    handleDialogClose()
+  }
+
+  const handleDialogOpen = () => {
+    const dialogStatus = localStorage.getItem('show-server-delay-dialog')
+    if (dialogStatus) return
+    setIsDialogOpen(true)
+  }
 
   async function handleSubmit({ email, password }) {
     const user = {
@@ -57,8 +81,30 @@ const SignIn = () => {
     }
   }
 
+  useEffect(() => {
+    handleDialogOpen()
+  }, [])
+
   return (
     <>
+      <ConfirmDialog
+        open={isDialogOpen}
+        handleClose={handleDialogClose}
+        title="Server Wake-up Notice"
+        renderDialogContent={() => (
+          <DialogContentText>
+            Please note that this is a free service and the server may take
+            30-60 seconds to wake up if there hasn't been recent activity. Your
+            request is important to us, and we appreciate your patience.
+          </DialogContentText>
+        )}
+        renderDialogActions={() => (
+          <DialogActions>
+            <Button onClick={handleDialogClose}>Close</Button>
+            <Button onClick={handleBlockDialog}>Never show me again</Button>
+          </DialogActions>
+        )}
+      />
       <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
         <LockOutlinedIcon />
       </Avatar>
