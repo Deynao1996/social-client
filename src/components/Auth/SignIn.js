@@ -90,12 +90,14 @@ const SignIn = () => {
       <ConfirmDialog
         open={isDialogOpen}
         handleClose={handleDialogClose}
-        title="Server Wake-up Notice"
+        title="Quick Server Wake-up & Demo Reminder"
         renderDialogContent={() => (
           <DialogContentText>
-            Please note that this is a free service and the server may take
-            30-60 seconds to wake up if there hasn't been recent activity. Your
-            request is important to us, and we appreciate your patience.
+            Please note that this is a free demo service and the server may take
+            30-60 seconds to wake up if there hasn't been recent activity.
+            Additionally, some functionalities of the project may be limited or
+            not fully operational. Your patience and understanding are greatly
+            appreciated.
           </DialogContentText>
         )}
         renderDialogActions={() => (
