@@ -21,6 +21,8 @@ import { useAuthProvider } from '../../contexts/AuthContext'
 import SearchBar from './SearchBar'
 import Notifications from './Notifications'
 import ChatInfo from './ChatInfo'
+import { replaceFirebaseEndpoint } from '../../utils/string-transforms-utils'
+import { AVATAR_TRANSFORMATION_CFG } from '../../storage'
 
 export const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
@@ -140,7 +142,10 @@ const CustomAppBar = () => {
                     >
                       <Avatar
                         alt={currentUser?.name}
-                        src={currentUser?.profilePicture}
+                        src={replaceFirebaseEndpoint(
+                          currentUser?.profilePicture,
+                          AVATAR_TRANSFORMATION_CFG
+                        )}
                       />
                     </StyledBadge>
                   </IconButton>

@@ -1,7 +1,11 @@
 import { Avatar, Box, MenuItem, Typography } from '@mui/material'
 import { formatDistance } from 'date-fns'
 import { StyledLink } from '../styled'
-import { getFullName } from '../utils/string-transforms-utils'
+import {
+  getFullName,
+  replaceFirebaseEndpoint
+} from '../utils/string-transforms-utils'
+import { AVATAR_TRANSFORMATION_CFG } from '../storage'
 
 const Notification = ({ not, handleClose }) => {
   if (not.type === 'new-message') return
@@ -49,7 +53,10 @@ const Notification = ({ not, handleClose }) => {
       >
         <Avatar
           alt={fullName}
-          src={not.userInfo[0].profilePicture}
+          src={replaceFirebaseEndpoint(
+            not.userInfo[0].profilePicture,
+            AVATAR_TRANSFORMATION_CFG
+          )}
           sx={{ mr: 1 }}
         />
         <div>

@@ -16,6 +16,8 @@ import { HideOnScroll } from '../ScrollWrappers/HideOnScroll'
 import { StyledBadge } from './CustomAppBar'
 import Notifications from './Notifications'
 import SearchBar from './SearchBar'
+import { replaceFirebaseEndpoint } from '../../utils/string-transforms-utils'
+import { AVATAR_TRANSFORMATION_CFG } from '../../storage'
 
 const MobileAppBar = () => {
   const { currentUser } = useAuthProvider()
@@ -70,7 +72,10 @@ const MobileAppBar = () => {
                 >
                   <Avatar
                     alt={currentUser?.name}
-                    src={currentUser?.profilePicture}
+                    src={replaceFirebaseEndpoint(
+                      currentUser?.profilePicture,
+                      AVATAR_TRANSFORMATION_CFG
+                    )}
                   />
                 </StyledBadge>
               </IconButton>

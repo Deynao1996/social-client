@@ -8,7 +8,11 @@ import {
 } from '@mui/material'
 import { formatDistance } from 'date-fns'
 import { StyledLink } from '../../styled'
-import { getFullName } from '../../utils/string-transforms-utils'
+import {
+  getFullName,
+  replaceFirebaseEndpoint
+} from '../../utils/string-transforms-utils'
+import { AVATAR_TRANSFORMATION_CFG } from '../../storage'
 
 const SingleComment = ({
   lastName,
@@ -28,7 +32,13 @@ const SingleComment = ({
       <ListItem alignItems="flex-start">
         <ListItemAvatar>
           <StyledLink to={`/profile/${userId}`}>
-            <Avatar alt={fullName} src={profilePicture} />
+            <Avatar
+              alt={fullName}
+              src={replaceFirebaseEndpoint(
+                profilePicture,
+                AVATAR_TRANSFORMATION_CFG
+              )}
+            />
           </StyledLink>
         </ListItemAvatar>
         <Box

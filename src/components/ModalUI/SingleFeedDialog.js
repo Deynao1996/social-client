@@ -17,13 +17,17 @@ import { useHandleError } from '../../hooks/useHandleError'
 import { fetchPost } from '../../utils/service-utils'
 import { useQuery } from '@tanstack/react-query'
 import { formatDistance } from 'date-fns'
-import { getFullName } from '../../utils/string-transforms-utils'
+import {
+  getFullName,
+  replaceFirebaseEndpoint
+} from '../../utils/string-transforms-utils'
 import { useSearchParams } from 'react-router-dom'
 import Likes from '../Feed/Likes'
 import Comments from '../Comments/Comments'
 import { useEffect } from 'react'
 import { setMediaConfig, StyledAudioMedia } from '../Feed/Media'
 import BackdropLoading from '../LoadingUI/BackdropLoading'
+import { AVATAR_TRANSFORMATION_CFG } from '../../storage'
 
 const SingleFeedDialog = () => {
   const [searchParams, setSearchParams] = useSearchParams({})
@@ -83,7 +87,10 @@ const SingleFeedDialog = () => {
                 <Avatar
                   aria-label="recipe"
                   alt={fullName}
-                  src={post?.userInfo[0].profilePicture}
+                  src={replaceFirebaseEndpoint(
+                    post?.userInfo[0].profilePicture,
+                    AVATAR_TRANSFORMATION_CFG
+                  )}
                 />
               }
               action={
@@ -122,6 +129,8 @@ const SingleFeedDialog = () => {
 }
 
 const CustomMedia = ({ mediaType, media }) => {
+  const cfg = setMediaConfig(mediaType, media)
+
   switch (mediaType) {
     case 'audio':
       return (
@@ -139,15 +148,30 @@ const CustomMedia = ({ mediaType, media }) => {
           <Avatar sx={{ width: 150, height: 150, marginBottom: 4 }}>
             <LibraryMusic sx={{ width: 100, height: 100 }} />
           </Avatar>
-          <StyledAudioMedia {...setMediaConfig(mediaType, media)} />
+          <StyledAudioMedia {...cfg} />
         </Box>
       )
     case 'image':
-      return <CardMedia height="100%" {...setMediaConfig(mediaType, media)} />
+      return (
+        <CardMedia
+          height="100%"
+          {...{
+            ...cfg,
+            src: replaceFirebaseEndpoint(cfg.src, '&tr=fo-auto,w-1200'),
+            srcSet: `${replaceFirebaseEndpoint(
+              cfg.src,
+              '&tr=fo-auto,w-1200'
+            )} 1200w, ${replaceFirebaseEndpoint(
+              cfg.src,
+              '&tr=fo-auto,w-600'
+            )} 600w`
+          }}
+        />
+      )
     case 'video':
       return (
         <CardMedia
-          {...setMediaConfig(mediaType, media)}
+          {...cfg}
           sx={{
             height: '100%',
             width: '100%',

@@ -13,7 +13,11 @@ import { useThemeProvider } from '../../contexts/ThemeContext'
 import { useHandleError } from '../../hooks/useHandleError'
 import { StyledLink } from '../../styled'
 import { fetchUsers } from '../../utils/service-utils'
-import { getFullName } from '../../utils/string-transforms-utils'
+import {
+  getFullName,
+  replaceFirebaseEndpoint
+} from '../../utils/string-transforms-utils'
+import { GRID_FRIEND_TRANSFORMATION_CFG } from '../../storage'
 
 const GridUserFriendsList = ({ following = [] }) => {
   const { data, isError, error } = useQuery(
@@ -69,7 +73,10 @@ const GridUserFriendsList = ({ following = [] }) => {
               <StyledLink to={`/profile/${user._id}`} key={user._id}>
                 <ImageListItem>
                   <img
-                    src={user.profilePicture}
+                    src={replaceFirebaseEndpoint(
+                      user.profilePicture,
+                      GRID_FRIEND_TRANSFORMATION_CFG
+                    )}
                     alt={fullName}
                     loading="lazy"
                     style={{ height: '120px' }}

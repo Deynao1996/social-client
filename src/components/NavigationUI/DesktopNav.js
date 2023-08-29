@@ -27,6 +27,8 @@ import FriendsList from '../Lists/FriendsList'
 import { StyledBadge } from '../AppBar/CustomAppBar'
 import { Link as RouterLink } from 'react-router-dom'
 import { renderFriendLinks } from '../../utils/render-items-utils'
+import { replaceFirebaseEndpoint } from '../../utils/string-transforms-utils'
+import { AVATAR_TRANSFORMATION_CFG } from '../../storage'
 
 const navLinks = [
   { primary: 'Feeds', icon: <RssFeed />, to: '/' },
@@ -65,6 +67,11 @@ export const ListItemLink = ({
   search = '',
   ...props
 }) => {
+  const transformedAvatar = replaceFirebaseEndpoint(
+    avatar,
+    AVATAR_TRANSFORMATION_CFG
+  )
+
   return (
     <li>
       <ListItemButton
@@ -81,10 +88,10 @@ export const ListItemLink = ({
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
                 variant="dot"
               >
-                <Avatar alt={primary} src={avatar} />
+                <Avatar alt={primary} src={transformedAvatar} />
               </StyledBadge>
             ) : (
-              <Avatar alt={primary} src={avatar} />
+              <Avatar alt={primary} src={transformedAvatar} />
             )}
           </ListItemAvatar>
         ) : null}

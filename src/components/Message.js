@@ -8,6 +8,8 @@ import {
 } from '@mui/material'
 import { formatDistance } from 'date-fns'
 import { Fragment } from 'react'
+import { AVATAR_TRANSFORMATION_CFG } from '../storage'
+import { replaceFirebaseEndpoint } from '../utils/string-transforms-utils'
 
 const Message = ({
   msg,
@@ -36,7 +38,13 @@ const Message = ({
         }}
       >
         <ListItemAvatar>
-          <Avatar alt={msg.sender.fullName} src={msg.sender.profilePicture} />
+          <Avatar
+            alt={msg.sender.fullName}
+            src={replaceFirebaseEndpoint(
+              msg.sender.profilePicture,
+              AVATAR_TRANSFORMATION_CFG
+            )}
+          />
         </ListItemAvatar>
         <ListItemText
           primary={msg.text}

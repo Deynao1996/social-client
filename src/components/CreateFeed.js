@@ -26,12 +26,16 @@ import { useRef, useState } from 'react'
 import { useAuthProvider } from '../contexts/AuthContext'
 import { useSendFile } from '../hooks/useSendFile'
 import { useHandleError } from '../hooks/useHandleError'
-import { capitalizeString } from '../utils/string-transforms-utils'
+import {
+  capitalizeString,
+  replaceFirebaseEndpoint
+} from '../utils/string-transforms-utils'
 import { createPost } from '../utils/service-utils'
 import loadable from '@loadable/component'
 import { useCallback } from 'react'
 import { useThemeProvider } from '../contexts/ThemeContext'
 import styled from '@emotion/styled'
+import { AVATAR_TRANSFORMATION_CFG } from '../storage'
 
 const CustomEmojiPicker = loadable(() => import('./CustomEmojiPicker'), {
   fallback: <CircularProgress color="primary" size={20} />
@@ -149,7 +153,10 @@ const CreateFeed = () => {
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <Avatar
             alt={currentUser?.username}
-            src={currentUser?.profilePicture}
+            src={replaceFirebaseEndpoint(
+              currentUser?.profilePicture,
+              AVATAR_TRANSFORMATION_CFG
+            )}
             sx={{ mr: 1, my: 0.5, width: 56, height: 56 }}
           />
           <TextField

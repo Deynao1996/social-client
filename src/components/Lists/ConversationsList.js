@@ -18,7 +18,10 @@ import {
 } from '@mui/material'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { StyledLink } from '../../styled'
-import { getFullName } from '../../utils/string-transforms-utils'
+import {
+  getFullName,
+  replaceFirebaseEndpoint
+} from '../../utils/string-transforms-utils'
 import CustomSkeleton from '../LoadingUI/CustomSkeleton'
 import ConfirmDialog from '../ModalUI/ConfirmDialog'
 import { useSnackbar } from 'notistack'
@@ -28,6 +31,7 @@ import { useHandleError } from '../../hooks/useHandleError'
 import { fetchMessageNotifications } from '../../utils/service-utils'
 import { useHandlingUnreadMsgs } from '../../hooks/useHandlingUnreadMsgs'
 import { useNavigate } from 'react-router-dom'
+import { AVATAR_TRANSFORMATION_CFG } from '../../storage'
 
 const StyledItemButton = styled(ListItemButton, {
   shouldForwardProp: (prop) => prop !== 'isCurrentChatPartner'
@@ -158,7 +162,13 @@ const ConversationsList = ({
         >
           <StyledItemButton isCurrentChatPartner={isCurrentChatPartner}>
             <ListItemAvatar>
-              <Avatar alt={receiverFullName} src={item.profilePicture} />
+              <Avatar
+                alt={receiverFullName}
+                src={replaceFirebaseEndpoint(
+                  item.profilePicture,
+                  AVATAR_TRANSFORMATION_CFG
+                )}
+              />
             </ListItemAvatar>
             <ListItemText primary={receiverFullName} />
             <ButtonGroup

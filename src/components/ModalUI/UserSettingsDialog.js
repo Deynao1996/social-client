@@ -24,8 +24,12 @@ import { useRef } from 'react'
 import { useHandleError } from '../../hooks/useHandleError'
 import { useSendFile } from '../../hooks/useSendFile'
 import { updateUser } from '../../utils/service-utils'
-import { capitalizeString } from '../../utils/string-transforms-utils'
+import {
+  capitalizeString,
+  replaceFirebaseEndpoint
+} from '../../utils/string-transforms-utils'
 import { useThemeProvider } from '../../contexts/ThemeContext'
+import { PROFILE_TRANSFORMATION_CFG } from '../../storage'
 
 const inputFields = [
   { label: 'Name', value: 'name', pattern: '^[a-zA-Z]*$' },
@@ -201,7 +205,10 @@ const UserSettingsDialog = ({ open, handleClose, currentUser }) => {
           <StyledCoverBackground>
             <StyledImageBackdrop />
             <img
-              src={imagePreviews.coverPicture}
+              src={replaceFirebaseEndpoint(
+                imagePreviews.coverPicture,
+                '&tr=w-800,fo-auto'
+              )}
               alt="bg"
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />
@@ -209,7 +216,10 @@ const UserSettingsDialog = ({ open, handleClose, currentUser }) => {
           <StyledAvatarContainer>
             <Avatar
               alt={currentUser?.username}
-              src={imagePreviews.profilePicture}
+              src={replaceFirebaseEndpoint(
+                imagePreviews.profilePicture,
+                PROFILE_TRANSFORMATION_CFG
+              )}
               sx={{ width: 150, height: 150, border: '3px solid white' }}
             />
           </StyledAvatarContainer>

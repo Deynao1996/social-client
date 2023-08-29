@@ -18,8 +18,12 @@ import Likes from './Likes'
 import { Link as RouterLink } from 'react-router-dom'
 import Media from './Media'
 import Comments from '../Comments/Comments'
-import { getFullName } from '../../utils/string-transforms-utils'
+import {
+  getFullName,
+  replaceFirebaseEndpoint
+} from '../../utils/string-transforms-utils'
 import FeedOptionsMenu from '../MenuUI/FeedOptionsMenu'
+import { AVATAR_TRANSFORMATION_CFG } from '../../storage'
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props
@@ -80,7 +84,13 @@ const Feed = ({
         <CardHeader
           avatar={
             <StyledLink to={`/profile/${userId}`}>
-              <Avatar alt={fullName} src={user.profilePicture} />
+              <Avatar
+                alt={fullName}
+                src={replaceFirebaseEndpoint(
+                  user.profilePicture,
+                  AVATAR_TRANSFORMATION_CFG
+                )}
+              />
             </StyledLink>
           }
           action={
@@ -94,13 +104,7 @@ const Feed = ({
           }}
           subheader={timeAgo}
         />
-        {!!media?.src && (
-          <Media
-            mediaType={mediaType}
-            media={media.src}
-            blurhash={media.blurhash}
-          />
-        )}
+        {!!media?.src && <Media mediaType={mediaType} media={media.src} />}
         <CardContent sx={{ paddingX: 2, paddingY: !!media?.src ? 2 : 0 }}>
           {tagsArr.length !== 0 &&
             tagsArr.map((tag, i) => (

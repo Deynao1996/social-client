@@ -12,9 +12,18 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useThemeProvider } from '../../contexts/ThemeContext'
-import { getFullName } from '../../utils/string-transforms-utils'
+import {
+  getFullName,
+  replaceFirebaseEndpoint
+} from '../../utils/string-transforms-utils'
 import MobileUserInfoDrawer from '../DrawerUI/MobileDrawer'
 import AsideUserInfo from './AsideUserInfo'
+import {
+  COVER_TRANSFORMATION_CFG_1920,
+  COVER_TRANSFORMATION_CFG_1200,
+  COVER_TRANSFORMATION_CFG_600,
+  PROFILE_TRANSFORMATION_CFG
+} from '../../storage'
 
 const TopUserInfo = ({ data, isLoading, renderActionButton }) => {
   const { theme } = useThemeProvider()
@@ -24,6 +33,19 @@ const TopUserInfo = ({ data, isLoading, renderActionButton }) => {
   const fullName = data?.data
     ? getFullName(data.data.lastName, data.data.name)
     : ''
+
+  const coverMobile = replaceFirebaseEndpoint(
+    data?.data.coverPicture,
+    COVER_TRANSFORMATION_CFG_600
+  )
+  const coverTablet = replaceFirebaseEndpoint(
+    data?.data.coverPicture,
+    COVER_TRANSFORMATION_CFG_1200
+  )
+  const coverDesktop = replaceFirebaseEndpoint(
+    data?.data.coverPicture,
+    COVER_TRANSFORMATION_CFG_1920
+  )
 
   const handleDrawerToggle = useCallback(() => {
     setIsMobileOpen((isMobileOpen) => !isMobileOpen)
@@ -58,7 +80,9 @@ const TopUserInfo = ({ data, isLoading, renderActionButton }) => {
           <Skeleton variant="rectangular" width={'100%'} height={'180px'} />
         ) : (
           <img
-            src={data?.data.coverPicture}
+            src={coverDesktop}
+            srcSet={`${coverMobile} 600w, ${coverTablet} 1200w, ${coverDesktop} 1920w`}
+            sizes="(min-width: 900px) 75vw, 100vw"
             alt="bg"
             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />
@@ -74,7 +98,10 @@ const TopUserInfo = ({ data, isLoading, renderActionButton }) => {
       >
         <Avatar
           alt={fullName}
-          src={data?.data.profilePicture}
+          src={replaceFirebaseEndpoint(
+            data?.data.profilePicture,
+            PROFILE_TRANSFORMATION_CFG
+          )}
           sx={{ width: 150, height: 150, border: '3px solid white' }}
         />
         <Typography variant="h4" marginTop={2}>

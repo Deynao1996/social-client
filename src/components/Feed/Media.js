@@ -40,12 +40,12 @@ export function setMediaConfig(mediaType, media) {
   }
 }
 
-const Media = ({ mediaType, media, blurhash }) => {
+const Media = ({ mediaType, media }) => {
   switch (mediaType) {
     case 'audio':
       return <StyledAudioMedia {...setMediaConfig(mediaType, media)} />
     case 'image':
-      return <OptimizedImage url={media} blurhash={blurhash} alt="Post media" />
+      return <OptimizedImage url={media} alt="Post media" />
     case 'video':
       return (
         <CardMedia

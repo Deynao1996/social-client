@@ -17,6 +17,8 @@ import { useAuthProvider } from '../contexts/AuthContext'
 import { StyledLink } from '../styled'
 import CreateFeed from './CreateFeed'
 import FriendsList from './Lists/FriendsList'
+import { replaceFirebaseEndpoint } from '../utils/string-transforms-utils'
+import { AVATAR_TRANSFORMATION_CFG } from '../storage'
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
@@ -61,7 +63,13 @@ const MobileFriendsPanel = () => {
         }}
       >
         <IconButton key={friend._id}>
-          <Avatar alt={friend.username} src={friend.profilePicture} />
+          <Avatar
+            alt={friend.username}
+            src={replaceFirebaseEndpoint(
+              friend.profilePicture,
+              AVATAR_TRANSFORMATION_CFG
+            )}
+          />
         </IconButton>
         <Typography variant="caption" noWrap color="main">
           {friend.username}

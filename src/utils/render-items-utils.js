@@ -1,4 +1,3 @@
-import { List } from '@mui/material'
 import { ListItemLink } from '../components/NavigationUI/DesktopNav'
 import { getFullName } from './string-transforms-utils'
 

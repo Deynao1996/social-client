@@ -12,6 +12,8 @@ import { useAuthProvider } from '../../contexts/AuthContext'
 import { StyledLink } from '../../styled'
 import CustomSkeleton from '../LoadingUI/CustomSkeleton'
 import { useSnackbar } from 'notistack'
+import { replaceFirebaseEndpoint } from '../../utils/string-transforms-utils'
+import { AVATAR_TRANSFORMATION_CFG } from '../../storage'
 
 const Likes = ({ likes, postId, userId }) => {
   const { currentUser } = useAuthProvider()
@@ -134,7 +136,10 @@ const Likes = ({ likes, postId, userId }) => {
                 <Avatar
                   size="small"
                   alt={user.name}
-                  src={user.profilePicture}
+                  src={replaceFirebaseEndpoint(
+                    user.profilePicture,
+                    AVATAR_TRANSFORMATION_CFG
+                  )}
                 />
               </StyledLink>
             ))

@@ -16,8 +16,15 @@ import { useThemeProvider } from '../../contexts/ThemeContext'
 import { useHandleError } from '../../hooks/useHandleError'
 import { StyledLink } from '../../styled'
 import { fetchAllUsers } from '../../utils/service-utils'
-import { getFullName } from '../../utils/string-transforms-utils'
+import {
+  getFullName,
+  replaceFirebaseEndpoint
+} from '../../utils/string-transforms-utils'
 import CustomSkeleton from '../LoadingUI/CustomSkeleton'
+import {
+  NEW_FRIENDS_TRANSFORMATION_CFG_400,
+  NEW_FRIENDS_TRANSFORMATION_CFG_200
+} from '../../storage'
 
 const ExpandedUsersList = ({ filter }) => {
   const { state } = useLocation()
@@ -68,11 +75,23 @@ const View = ({ user, isMobile }) => {
       ? `${followersCount} follower`
       : `${followersCount} followers`
 
+  const mobileSrc = replaceFirebaseEndpoint(
+    user.profilePicture,
+    NEW_FRIENDS_TRANSFORMATION_CFG_200
+  )
+
+  const desktopSrc = replaceFirebaseEndpoint(
+    user.profilePicture,
+    NEW_FRIENDS_TRANSFORMATION_CFG_400
+  )
+
   return (
     <ImageListItem cols={1}>
       <img
-        src={user.profilePicture}
+        src={desktopSrc}
         alt={fullName}
+        srcSet={`${mobileSrc} 200w, ${desktopSrc} 400w`}
+        sizes="(min-width: 900px) 20vw, 33vw"
         loading="lazy"
         height={isMobile ? '150px' : '290px'}
       />

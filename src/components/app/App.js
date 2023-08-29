@@ -13,6 +13,7 @@ import { AuthProvider } from '../../contexts/AuthContext'
 import { SocketProvider } from '../../contexts/SocketContext'
 import HomePage from '../../pages/HomePage'
 import ProfilePage from '../../pages/ProfilePage'
+import 'react-lazy-load-image-component/src/effects/blur.css'
 
 const SearchPage = loadable(() => import('../../pages/SearchPage'), {
   fallback: <BackdropLoading />

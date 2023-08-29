@@ -1,53 +1,40 @@
 import styled from '@emotion/styled'
 import { CardMedia } from '@mui/material'
-import React, { useState } from 'react'
-import { Blurhash } from 'react-blurhash'
+import React from 'react'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
+import { replaceFirebaseEndpoint } from '../utils/string-transforms-utils'
 
 const StyledLazyLoadImage = styled(LazyLoadImage)(() => ({
   objectFit: 'cover'
 }))
 
-const StyledBlurHash = styled(Blurhash)(() => ({
-  zIndex: 5,
-  position: 'absolute !important',
-  top: '0',
-  left: '0'
-}))
+const isTablet = window.matchMedia('(max-width: 961px)').matches
+const isMobile = window.matchMedia('(max-width: 481px)').matches
 
-const OptimizedImage = ({ url, blurhash, ...props }) => {
-  const [isLoaded, setLoaded] = useState(false)
-  const [isLoadStarted, setLoadStarted] = useState(false)
+const OptimizedImage = ({ url, imageParams = '&tr=fo-auto', ...props }) => {
+  const relativeURL = `${replaceFirebaseEndpoint(url)}${imageParams}`
 
-  const handleLoad = () => {
-    setLoaded(true)
-  }
-
-  const handleLoadStarted = () => {
-    setLoadStarted(true)
+  function setResponsiveUrl(url) {
+    if (isMobile) {
+      return relativeURL + ',w-500,h-500'
+    } else if (isTablet) {
+      return relativeURL + ',w-1000,h-700'
+    } else {
+      return url
+    }
   }
 
   return (
-    <CardMedia sx={{ position: 'relative' }}>
+    <CardMedia>
       <StyledLazyLoadImage
         key={url}
-        src={url}
+        src={setResponsiveUrl(relativeURL)}
         height={500}
         width={'100%'}
-        onLoad={handleLoad}
-        beforeLoad={handleLoadStarted}
+        effect="blur"
+        placeholderSrc={setResponsiveUrl(relativeURL) + ',bl-100,q-10'}
         {...props}
       />
-      {!isLoaded && isLoadStarted && (
-        <StyledBlurHash
-          hash={blurhash}
-          width={'100%'}
-          height={500}
-          resolutionX={32}
-          resolutionY={32}
-          punch={1}
-        />
-      )}
     </CardMedia>
   )
 }
