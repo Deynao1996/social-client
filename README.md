@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+# Social - A Social Media Web Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Social** is a full-stack web application for social media. This repository contains the client part of the application, while the backend part can be found in the [social-server repository](https://github.com/Deynao1996/social-server).
 
-## Available Scripts
+Explore Social, a feature-rich social media platform with dark and light themes, registration, authentication, and real-time chat using socket.io. It allows users to create posts, share media with friends, find new friends, and engage in chat conversations.
 
-In the project directory, you can run:
+![Social Preview](https://res.cloudinary.com/dkl9cqqui/image/upload/v1695291233/social_a5du6f.jpg)
 
-### `npm start`
+## Live Demo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Check out the live demo of Social: [Social Live Demo](https://dbvision-social.netlify.app)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Please note that some functionality in this demo has been limited for security reasons.
 
-### `npm test`
+## Source Code
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Find the source code for this client part of the project on GitHub: [Social Source Code](https://github.com/Deynao1996/social-client)
 
-### `npm run build`
+## Backend Repository
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+For the backend part of the application, visit the [social-server repository](https://github.com/Deynao1996/social-server).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Getting Started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To run this project locally, follow these steps:
 
-### `npm run eject`
+### Prerequisites
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Before you begin, ensure you have the following software installed:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Node.js and npm
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Installation
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. Clone the repository to your local machine:
 
-## Learn More
+   ```bash
+   git clone https://github.com/Deynao1996/social-client.git
+2. Navigate to the project directory:
+   ```bash
+   cd social-client
+3. Install project dependencies:
+   ```bash
+   npm install
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Running the project
+To start the development server, run:
+```bash
+npm start
+```
+This will launch the application in development mode.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Contributing
+We welcome contributions to make this project even better. If you'd like to contribute, please follow these guidelines:
+1. Fork this repository.
+2. Create a new branch for your changes.
+3. Make your improvements and commit them.
+4. Submit a pull request with a detailed description of your changes.
 
-### Code Splitting
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the [MIT License](https://github.com/Deynao1996/social-client/blob/master/LICENSE.txt).
