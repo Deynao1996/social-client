@@ -10,7 +10,9 @@ Explore Social, a feature-rich social media platform with dark and light themes,
 
 Check out the live demo of Social: [Social Live Demo](https://dbvision-social.netlify.app)
 
-Please note that some functionality in this demo has been limited for security reasons.
+Please note that the demo is hosted on a free hosting service, and the server may automatically go to sleep if there are no requests from the client side. In such cases, it may take 30-60 seconds for the server to wake up when you access the demo.
+
+It's important to know that that some functionality in this demo has been limited for security reasons.
 
 ## Source Code
 
