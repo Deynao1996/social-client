@@ -132,7 +132,7 @@ const Likes = ({ likes, postId, userId }) => {
             <CustomSkeleton type="licked-users" count={customLikes.length} />
           ) : (
             data?.data.map((user) => (
-              <StyledLink to={`profile/${user._id}`} key={user._id}>
+              <StyledLink to={`/profile/${user._id}`} key={user._id}>
                 <Avatar
                   size="small"
                   alt={user.name}
