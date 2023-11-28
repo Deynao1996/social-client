@@ -50,7 +50,7 @@ const Comments = ({
 
   return (
     <Collapse in={expanded && !isLoading} timeout="auto" unmountOnExit>
-      <CardContent>
+      <CardContent sx={{ p: { xs: 0, sm: 2 } }}>
         <List>
           {isLoading ? (
             <StyledBox component="li">
@@ -70,7 +70,7 @@ const Comments = ({
           />
         </List>
       </CardContent>
-      {!!comments.length && (
+      {comments.length > 5 && (
         <StyledBox sx={{ paddingBottom: 1 }}>
           <CustomPagination count={totalPages} handleChange={handleChange} />
         </StyledBox>

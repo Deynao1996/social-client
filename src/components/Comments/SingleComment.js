@@ -33,7 +33,7 @@ const SingleComment = ({
         <ListItemAvatar>
           <StyledLink to={`/profile/${userId}`}>
             <Avatar
-              alt={fullName}
+              alt={'Profile picture of ' + fullName}
               src={replaceFirebaseEndpoint(
                 profilePicture,
                 AVATAR_TRANSFORMATION_CFG

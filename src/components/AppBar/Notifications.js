@@ -64,7 +64,7 @@ const Notifications = ({ children }) => {
     <>
       <StyledBox sx={{ cursor: 'pointer' }} onClick={handleMenuOpen}>
         <Tooltip title="Notifications">
-          <IconButton size="large" color="inherit">
+          <IconButton size="large" color="inherit" aria-label="Notifications">
             <Badge badgeContent={notificationsCount || 0} color="error">
               <NotificationsIcon />
             </Badge>

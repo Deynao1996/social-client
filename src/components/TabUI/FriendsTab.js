@@ -88,6 +88,7 @@ const FriendsTab = ({ data, isConversationLoading }) => {
             <IconButton
               edge="end"
               onClick={(e) => handleCreate(e, receiverId)}
+              aria-label="Start conversation"
               disabled={isLoading || isConversationLoading}
             >
               <Forum />

@@ -163,7 +163,7 @@ const ConversationsList = ({
           <StyledItemButton isCurrentChatPartner={isCurrentChatPartner}>
             <ListItemAvatar>
               <Avatar
-                alt={receiverFullName}
+                alt={'Profile picture of ' + receiverFullName}
                 src={replaceFirebaseEndpoint(
                   item.profilePicture,
                   AVATAR_TRANSFORMATION_CFG
@@ -178,12 +178,13 @@ const ConversationsList = ({
             >
               <IconButton
                 data-button-role="delete"
+                aria-label="delete conversation"
                 onClick={(e) => handleDialogOpen(e, item.conversationId)}
               >
                 <Delete />
               </IconButton>
               {!!newMessagesNum && (
-                <IconButton>
+                <IconButton component="div">
                   <Badge badgeContent={newMessagesNum} color="error">
                     <Email />
                   </Badge>

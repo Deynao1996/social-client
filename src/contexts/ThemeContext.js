@@ -1,4 +1,8 @@
-import { createTheme, ThemeProvider as MuiThemeProvider } from '@mui/material'
+import {
+  createTheme,
+  ThemeProvider as MuiThemeProvider,
+  responsiveFontSizes
+} from '@mui/material'
 import React, { useContext, useState, useMemo, useEffect } from 'react'
 
 const ThemeContext = React.createContext()
@@ -16,14 +20,14 @@ export const ThemeProvider = ({ children }) => {
 
   const theme = useMemo(
     () =>
-      createTheme({
-        typography: {
-          fontFamily: ['Roboto', 'sans-serif'].join(',')
-        },
-        palette: {
-          mode
-        }
-      }),
+      responsiveFontSizes(
+        createTheme({
+          typography: ['Roboto', 'sans-serif'].join(','),
+          palette: {
+            mode
+          }
+        })
+      ),
     [mode]
   )
 

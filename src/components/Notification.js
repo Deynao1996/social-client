@@ -52,7 +52,7 @@ const Notification = ({ not, handleClose }) => {
         sx={{ display: 'flex' }}
       >
         <Avatar
-          alt={fullName}
+          alt={`Profile picture of ${fullName}`}
           src={replaceFirebaseEndpoint(
             not.userInfo[0].profilePicture,
             AVATAR_TRANSFORMATION_CFG

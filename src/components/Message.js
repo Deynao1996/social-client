@@ -31,15 +31,14 @@ const Message = ({
       <ListItem
         alignItems="flex-start"
         sx={{
-          maxWidth: '70%',
-          width: 'fit-content',
+          width: { xs: '90%', md: '70%' },
           paddingY: 0,
           ...(isOwner ? { marginRight: 'auto' } : { marginLeft: 'auto' })
         }}
       >
         <ListItemAvatar>
           <Avatar
-            alt={msg.sender.fullName}
+            alt={`Profile picture of ${msg.sender.fullName}`}
             src={replaceFirebaseEndpoint(
               msg.sender.profilePicture,
               AVATAR_TRANSFORMATION_CFG
@@ -51,7 +50,7 @@ const Message = ({
           primaryTypographyProps={{
             sx: {
               minWidth: 'min-content',
-              borderRadius: '20px',
+              borderRadius: '10px',
               p: 1.2,
               backgroundColor: isOwner ? 'info.dark' : 'divider',
               color: (theme) =>

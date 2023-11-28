@@ -152,7 +152,7 @@ const CreateFeed = () => {
       >
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <Avatar
-            alt={currentUser?.username}
+            alt={`Profile picture of ${currentUser?.username}`}
             src={replaceFirebaseEndpoint(
               currentUser?.profilePicture,
               AVATAR_TRANSFORMATION_CFG
@@ -199,6 +199,7 @@ const CreateFeed = () => {
               <Button
                 sx={{ textTransform: 'none' }}
                 startIcon={media ? <DoneAll color="success" /> : <PermMedia />}
+                aria-label="Upload Media"
                 component="label"
               >
                 <input
@@ -210,6 +211,7 @@ const CreateFeed = () => {
                   id="media"
                   multiple={false}
                   onChange={handleFileChange}
+                  aria-label="Upload Media"
                 />
                 Photo, Video or Audio
               </Button>

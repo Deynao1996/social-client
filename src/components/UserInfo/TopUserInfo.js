@@ -97,7 +97,7 @@ const TopUserInfo = ({ data, isLoading, renderActionButton }) => {
         }}
       >
         <Avatar
-          alt={fullName}
+          alt={'Profile picture of ' + fullName}
           src={replaceFirebaseEndpoint(
             data?.data.profilePicture,
             PROFILE_TRANSFORMATION_CFG

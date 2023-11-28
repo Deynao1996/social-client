@@ -23,6 +23,7 @@ import Notifications from './Notifications'
 import ChatInfo from './ChatInfo'
 import { replaceFirebaseEndpoint } from '../../utils/string-transforms-utils'
 import { AVATAR_TRANSFORMATION_CFG } from '../../storage'
+import Logo from '../Logo'
 
 export const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
@@ -66,7 +67,7 @@ const CustomAppBar = () => {
           <Grid item xs={3}>
             <StyledLink to="/">
               <Typography variant="h5" noWrap component="div" sx={{ mr: 2 }}>
-                Social
+                Sociate
               </Typography>
             </StyledLink>
           </Grid>
@@ -83,6 +84,7 @@ const CustomAppBar = () => {
               <IconButton
                 onClick={toggleColorMode}
                 size="large"
+                aria-label="Toggle Color Mode"
                 color="inherit"
               >
                 <LightMode />
@@ -90,7 +92,11 @@ const CustomAppBar = () => {
               <StyledBox sx={{ cursor: 'pointer' }}>
                 <Tooltip title="Timeline">
                   <StyledLink to="/">
-                    <IconButton size="large" color="inherit">
+                    <IconButton
+                      size="large"
+                      color="inherit"
+                      aria-label="Timeline"
+                    >
                       <Feed />
                     </IconButton>
                   </StyledLink>
@@ -104,7 +110,11 @@ const CustomAppBar = () => {
                         to="/chat"
                         sx={{ display: 'flex', alignItems: 'center' }}
                       >
-                        <IconButton size="large" color="inherit">
+                        <IconButton
+                          size="large"
+                          color="inherit"
+                          aria-label="Chat"
+                        >
                           <Badge
                             badgeContent={data?.data.newMessagesCount}
                             color="error"
@@ -141,7 +151,7 @@ const CustomAppBar = () => {
                       variant="dot"
                     >
                       <Avatar
-                        alt={currentUser?.name}
+                        alt={`Profile picture of ${currentUser?.name}`}
                         src={replaceFirebaseEndpoint(
                           currentUser?.profilePicture,
                           AVATAR_TRANSFORMATION_CFG

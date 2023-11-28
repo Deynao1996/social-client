@@ -38,7 +38,7 @@ const Copyright = (props) => {
     >
       {'Copyright © '}
       <MuiLink color="inherit" component="span">
-        Social
+        Sociate
       </MuiLink>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -95,6 +95,8 @@ const SignIn = () => {
           <DialogContentText>
             Please note that this is a free demo service and the server may take
             30-60 seconds to wake up if there hasn't been recent activity.
+            <br />
+            <br />
             Additionally, some functionalities of the project may be limited or
             not fully operational. Your patience and understanding are greatly
             appreciated.

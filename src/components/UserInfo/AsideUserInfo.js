@@ -32,7 +32,7 @@ const AsideUserInfo = ({ data, renderActionButton }) => {
         dense={true}
         subheader={
           <ListSubheader
-            component="div"
+            component="li"
             sx={{ fontWeight: 'bold', display: { xs: 'none', md: 'block' } }}
           >
             User information:

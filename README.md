@@ -1,14 +1,14 @@
-# Social - A Social Media Web Application
+# Sociate - A Social Media Web Application
 
-**Social** is a full-stack web application for social media. This repository contains the client part of the application, while the backend part can be found in the [social-server repository](https://github.com/Deynao1996/social-server).
+**Sociate** is a full-stack web application for social media. This repository contains the client part of the application, while the backend part can be found in the [sociate-server repository](https://github.com/Deynao1996/social-server).
 
-Explore Social, a feature-rich social media platform with dark and light themes, registration, authentication, and real-time chat using socket.io. It allows users to create posts, share media with friends, find new friends, and engage in chat conversations.
+Explore Sociate, a feature-rich social media platform with dark and light themes, registration, authentication, and real-time chat using socket.io. It allows users to create posts, share media with friends, find new friends, and engage in chat conversations.
 
-![Social Preview](https://res.cloudinary.com/dkl9cqqui/image/upload/v1695291233/social_a5du6f.jpg)
+![Sociate Preview](https://res.cloudinary.com/dkl9cqqui/image/upload/v1701064689/markup-min_ikgf2d.jpg)
 
 ## Live Demo
 
-Check out the live demo of Social: [Social Live Demo](https://dbvision-social.netlify.app)
+Check out the live demo of Sociate: [Sociate Live Demo](https://dbvision-social.netlify.app)
 
 Please note that the demo is hosted on a free hosting service, and the server may automatically go to sleep if there are no requests from the client side. In such cases, it may take 30-60 seconds for the server to wake up when you access the demo.
 
@@ -16,7 +16,7 @@ It's important to know that that some functionality in this demo has been limite
 
 ## Source Code
 
-Find the source code for this client part of the project on GitHub: [Social Source Code](https://github.com/Deynao1996/social-client)
+Find the source code for this client part of the project on GitHub: [Sociate Source Code](https://github.com/Deynao1996/social-client)
 
 ## Backend Repository
 

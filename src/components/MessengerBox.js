@@ -175,7 +175,7 @@ const MessengerBox = ({ conversationId, data: conversationData }) => {
   }
 
   useEffect(() => {
-    scrollTriggerRef.current?.scrollIntoView({ behavior: 'smooth' })
+    scrollTriggerRef.current?.scrollIntoView()
   }, [data])
 
   useEffect(() => {

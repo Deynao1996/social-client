@@ -85,7 +85,7 @@ const Feed = ({
           avatar={
             <StyledLink to={`/profile/${userId}`}>
               <Avatar
-                alt={fullName}
+                alt={'Profile picture of ' + fullName}
                 src={replaceFirebaseEndpoint(
                   user.profilePicture,
                   AVATAR_TRANSFORMATION_CFG

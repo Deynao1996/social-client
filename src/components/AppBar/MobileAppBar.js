@@ -45,7 +45,7 @@ const MobileAppBar = () => {
         >
           <StyledLink to="/">
             <Typography variant="h5" noWrap component="div" sx={{ mr: 2 }}>
-              Social
+              Sociate
             </Typography>
           </StyledLink>
           <Stack direction="row" spacing={0}>
@@ -71,7 +71,7 @@ const MobileAppBar = () => {
                   variant="dot"
                 >
                   <Avatar
-                    alt={currentUser?.name}
+                    alt={'Profile picture of ' + currentUser?.name}
                     src={replaceFirebaseEndpoint(
                       currentUser?.profilePicture,
                       AVATAR_TRANSFORMATION_CFG

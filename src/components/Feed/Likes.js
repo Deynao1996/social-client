@@ -102,6 +102,7 @@ const Likes = ({ likes, postId, userId }) => {
         checkedIcon={<Favorite color="error" />}
         onClick={handleClick}
         checked={isChecked}
+        aria-label="toggle like"
       />
       <Typography
         variant="body2"
@@ -135,7 +136,7 @@ const Likes = ({ likes, postId, userId }) => {
               <StyledLink to={`/profile/${user._id}`} key={user._id}>
                 <Avatar
                   size="small"
-                  alt={user.name}
+                  alt={'Profile picture of ' + user.name}
                   src={replaceFirebaseEndpoint(
                     user.profilePicture,
                     AVATAR_TRANSFORMATION_CFG

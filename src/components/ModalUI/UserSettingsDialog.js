@@ -215,7 +215,7 @@ const UserSettingsDialog = ({ open, handleClose, currentUser }) => {
           </StyledCoverBackground>
           <StyledAvatarContainer>
             <Avatar
-              alt={currentUser?.username}
+              alt={'Profile picture of ' + currentUser?.username}
               src={replaceFirebaseEndpoint(
                 imagePreviews.profilePicture,
                 PROFILE_TRANSFORMATION_CFG

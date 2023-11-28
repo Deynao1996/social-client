@@ -70,16 +70,20 @@ const GridUserFriendsList = ({ following = [] }) => {
           {data?.data.map((user) => {
             const fullName = getFullName(user.lastName, user.name)
             return (
-              <StyledLink to={`/profile/${user._id}`} key={user._id}>
-                <ImageListItem>
+              <ImageListItem key={user._id}>
+                <StyledLink to={`/profile/${user._id}`}>
                   <img
                     src={replaceFirebaseEndpoint(
                       user.profilePicture,
                       GRID_FRIEND_TRANSFORMATION_CFG
                     )}
-                    alt={fullName}
+                    alt={'Profile picture of ' + fullName}
                     loading="lazy"
-                    style={{ height: '120px' }}
+                    style={{
+                      height: '120px',
+                      width: '100%',
+                      objectFit: 'cover'
+                    }}
                   />
                   <ImageListItemBar
                     title={fullName}
@@ -89,8 +93,8 @@ const GridUserFriendsList = ({ following = [] }) => {
                       '.MuiImageListItemBar-title': { fontSize: '0.8rem' }
                     }}
                   />
-                </ImageListItem>
-              </StyledLink>
+                </StyledLink>
+              </ImageListItem>
             )
           })}
         </ImageList>

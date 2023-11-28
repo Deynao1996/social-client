@@ -64,7 +64,7 @@ const MobileFriendsPanel = () => {
       >
         <IconButton key={friend._id}>
           <Avatar
-            alt={friend.username}
+            alt={`Profile picture of ${friend.username}`}
             src={replaceFirebaseEndpoint(
               friend.profilePicture,
               AVATAR_TRANSFORMATION_CFG
@@ -103,7 +103,7 @@ const MobileFriendsPanel = () => {
               color="primary"
             >
               <Avatar
-                alt={currentUser?.username}
+                alt={`Profile picture of ${currentUser?.username}`}
                 src={currentUser?.profilePicture}
               />
             </StyledBadge>

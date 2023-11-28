@@ -125,6 +125,7 @@ const SearchBar = React.forwardRef((props, ref) => {
           startAdornment={
             <IconButton
               onClick={() => handleSubmit()}
+              aria-label="Search"
               sx={{ color: 'rgba(255, 255, 255, 1)' }}
             >
               <SearchIcon />

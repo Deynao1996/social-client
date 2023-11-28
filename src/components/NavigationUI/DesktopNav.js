@@ -88,10 +88,16 @@ export const ListItemLink = ({
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
                 variant="dot"
               >
-                <Avatar alt={primary} src={transformedAvatar} />
+                <Avatar
+                  alt={`Profile picture of ${primary}`}
+                  src={transformedAvatar}
+                />
               </StyledBadge>
             ) : (
-              <Avatar alt={primary} src={transformedAvatar} />
+              <Avatar
+                alt={`Profile picture of ${primary}`}
+                src={transformedAvatar}
+              />
             )}
           </ListItemAvatar>
         ) : null}

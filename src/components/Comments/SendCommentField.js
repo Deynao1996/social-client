@@ -98,7 +98,7 @@ const SendCommentField = ({
     if (expanded && !disableScroll) {
       let timer = setTimeout(
         () => scrollTo(),
-        theme.transitions.duration.standard
+        theme.transitions.duration.standard + 500
       )
       return () => {
         clearTimeout(timer)
@@ -108,8 +108,11 @@ const SendCommentField = ({
 
   return (
     <ListItem alignItems="flex-start">
-      <ListItemAvatar ref={scrollTriggerRef}>
-        <Avatar alt={fullName} src={profilePicture} />
+      <ListItemAvatar
+        sx={{ display: { xs: 'none', sm: 'block' } }}
+        ref={scrollTriggerRef}
+      >
+        <Avatar alt={'Profile picture of ' + fullName} src={profilePicture} />
       </ListItemAvatar>
       <Box
         sx={{
@@ -149,7 +152,12 @@ const SendCommentField = ({
             required
             onKeyDown={handleKeyPress}
           />
-          <Button size="small" type="submit" variant="contained">
+          <Button
+            size="small"
+            type="submit"
+            variant="contained"
+            sx={{ width: { xs: '100%', sm: '20%', md: 'auto' } }}
+          >
             Send
           </Button>
         </Box>

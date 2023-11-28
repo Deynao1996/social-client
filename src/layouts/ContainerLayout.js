@@ -1,5 +1,13 @@
-import { Container, CssBaseline, Grid, Paper, Typography } from '@mui/material'
+import {
+  Box,
+  Container,
+  CssBaseline,
+  Grid,
+  Paper,
+  Typography
+} from '@mui/material'
 import { Outlet } from 'react-router-dom'
+import Logo from '../components/Logo'
 
 const ContainerLayout = () => {
   return (
@@ -8,7 +16,10 @@ const ContainerLayout = () => {
       sx={{
         borderRadius: 'unset',
         width: '100%',
-        height: '100%'
+        minHeight: '100svh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
       }}
     >
       <CssBaseline enableColorScheme />
@@ -20,11 +31,14 @@ const ContainerLayout = () => {
             md={6}
             sx={{ display: { xs: 'none', md: 'block' } }}
           >
-            <Typography color="primary.main" component="h1" variant="h3">
-              Social
-            </Typography>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+              <Logo w={50} h={50} />
+              <Typography color="primary.main" component="h1" variant="h3">
+                Sociate
+              </Typography>
+            </Box>
             <Typography variant="h6">
-              Connect with friends and the world around you on Social
+              Connect with friends and the world around you on Sociate
             </Typography>
           </Grid>
           <Grid item xs={12} md={6}>

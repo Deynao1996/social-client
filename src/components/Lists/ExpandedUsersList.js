@@ -89,7 +89,7 @@ const View = ({ user, isMobile }) => {
     <ImageListItem cols={1}>
       <img
         src={desktopSrc}
-        alt={fullName}
+        alt={'Profile picture of ' + fullName}
         srcSet={`${mobileSrc} 200w, ${desktopSrc} 400w`}
         sizes="(min-width: 900px) 20vw, 33vw"
         loading="lazy"
