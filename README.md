@@ -1,12 +1,37 @@
-# Sociate - A Social Media Web Application
+<div align="center">
+  <br />
+      <img src="https://res.cloudinary.com/dkl9cqqui/image/upload/v1728730694/social_m7qwxq.png" alt="Project Banner">
+  <br />
+
+  <div>
+    <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="react" />
+    <img src="https://img.shields.io/badge/Material%20UI-007FFF?style=for-the-badge&logo=mui&logoColor=white" alt="material-ui" />
+    <img src="https://img.shields.io/badge/Socket.io-010101?&style=for-the-badge&logo=Socket.io&logoColor=white" alt="socket" />
+    <img src="https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black" alt="firebase" />
+    <img src="https://img.shields.io/badge/Express%20js-000000?style=for-the-badge&logo=express&logoColor=white" alt="express" />
+    <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" alt="mongo-db" />
+  </div>
+
+  <h3 align="center">Sociate - A Social Media Web Application</h3>
+
+   <div align="center">
+     I built this social media web application as a way to practice and improve my development skills, while learning new technologies and gaining experience. By incorporating features like real-time chat, post sharing, I aimed to create a dynamic, interactive platform that challenges me to grow as a developer.
+    </div>
+</div>
+
+## 📋 <a name="table">Table of Contents</a>
+
+1. 📘 [Intro](#introduction)
+2. 🛠️ [Tech Stack](#tech-stack)
+3. ✨ [Features](#features)
+4. 🚀 [Quick Start](#quick-start)
+5. 📄 [License](#license)
+
+## <a name="introduction">📘 Intro</a>
 
 **Sociate** is a full-stack web application for social media. This repository contains the client part of the application, while the backend part can be found in the [sociate-server repository](https://github.com/Deynao1996/social-server).
 
 Explore Sociate, a feature-rich social media platform with dark and light themes, registration, authentication, and real-time chat using socket.io. It allows users to create posts, share media with friends, find new friends, and engage in chat conversations.
-
-![Sociate Preview](https://res.cloudinary.com/dkl9cqqui/image/upload/v1701064689/markup-min_ikgf2d.jpg)
-
-## Live Demo
 
 Check out the live demo of Sociate: [Sociate Live Demo](https://dbvision-social.netlify.app)
 
@@ -14,51 +39,79 @@ Please note that the demo is hosted on a free hosting service, and the server ma
 
 It's important to know that that some functionality in this demo has been limited for security reasons.
 
-## Source Code
+## <a name="tech-stack">🛠️ Tech Stack</a>
 
-Find the source code for this client part of the project on GitHub: [Sociate Source Code](https://github.com/Deynao1996/social-client)
+- React
+- Socket IO
+- Material UI
+- Firebase
+- Express JS
+- Mongo DB
 
-## Backend Repository
+## <a name="features">✨ Features</a>
 
-For the backend part of the application, visit the [social-server repository](https://github.com/Deynao1996/social-server).
+⭐ **Fully Responsive Design**: The app is optimized for all screen sizes, ensuring a seamless experience on both mobile and desktop devices.
 
-## Getting Started
+⭐ **Real-Time Chat**: Instant messaging capabilities allow users to chat with friends in real-time without needing to refresh the page.
 
-To run this project locally, follow these steps:
+⭐ **User Authentication**: Secure authentication ensures that only registered users can access the platform, keeping profiles and data safe.
 
-### Prerequisites
+⭐ **Light and Dark Mode**: Users can switch between light and dark themes, providing a personalized and comfortable viewing experience.
 
-Before you begin, ensure you have the following software installed:
+⭐ **Create and Share Posts**: Users can create, share, like, and comment on posts, engaging with their community through meaningful interactions.
 
-- Node.js and npm
+⭐ **Friend Discovery**: The app helps users connect with new friends, fostering a social experience where users can expand their network.
 
-### Installation
+## <a name="quick-start">🚀 Quick Start</a>
 
-1. Clone the repository to your local machine:
+Follow these steps to set up the project locally on your machine.
 
-   ```bash
-   git clone https://github.com/Deynao1996/social-client.git
-2. Navigate to the project directory:
-   ```bash
-   cd social-client
-3. Install project dependencies:
-   ```bash
-   npm install
+**Prerequisites**
 
-### Running the project
-To start the development server, run:
+Make sure you have the following installed on your machine:
+
+- [Git](https://git-scm.com/)
+- [Node.js](https://nodejs.org/en)
+- [npm](https://www.npmjs.com/) (Node Package Manager)
+
+**Cloning the Repository**
+
+```bash
+git clone https://github.com/Deynao1996/social-client.git
+cd social-client
+```
+
+**Installation**
+
+Install the project dependencies using npm:
+
+```bash
+npm install
+```
+
+**Set Up Environment Variables**
+
+Create a new file named `.env` in the root of your project and add the following content:
+
+```env
+REACT_APP_PUBLIC_URL=
+REACT_APP_API_URL=
+REACT_APP_PASS_SEC=
+REACT_APP_WITH_SOCKETIO=
+REACT_APP_IMAGEKIT_ENDPOINT=
+```
+
+Replace the placeholder values with your actual React Public credentials.
+
+**Running the Project**
+
 ```bash
 npm start
 ```
+
 This will launch the application in development mode.
 
-### Contributing
-We welcome contributions to make this project even better. If you'd like to contribute, please follow these guidelines:
-1. Fork this repository.
-2. Create a new branch for your changes.
-3. Make your improvements and commit them.
-4. Submit a pull request with a detailed description of your changes.
-
-## License
+## <a name="license">📄 License</a>
 
 This project is licensed under the [MIT License](https://github.com/Deynao1996/social-client/blob/master/LICENSE.txt).
+
